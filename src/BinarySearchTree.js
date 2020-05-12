@@ -6,12 +6,17 @@ const TreeContainer = styled.div`
   width: 100vw;
 `;
 
-const TreeData = [
+const TreeDefaultData = [
   {
     name: 'whoa',
     children: [
       {
         name: 'okay',
+        children: [
+          {
+            name: 'haha',
+          },
+        ]
       },
       {
         name: 'alright',
@@ -19,6 +24,38 @@ const TreeData = [
     ]
   }
 ];
+
+const nodeStyle = {
+  circle: {
+    stroke: 'white',
+    fill: '#162447',
+  },
+  name: {
+    stroke: 'white',
+    fill: 'white',
+  },
+}
+
+const styles = {
+  links: {
+    stroke: 'white',
+  },
+  nodes: {
+    node: nodeStyle,
+    leafNode: nodeStyle,
+  }
+};
+
+const nodeSvgShape = {
+  shape: 'circle',
+  shapeProps: {
+    r: 40,
+  },
+};
+
+const textLayout = {
+  textAnchor: 'middle',
+};
 
 const BinarySearchTree = () => {
   const treeContainerEl = useRef(null);
@@ -37,9 +74,13 @@ const BinarySearchTree = () => {
     <TreeContainer ref={treeContainerEl}>
       {translate &&
         <Tree
-          data={TreeData}
+          data={TreeDefaultData}
           orientation='vertical'
+          pathFunc='straight'
           translate={translate}
+          styles={styles}
+          nodeSvgShape={nodeSvgShape}
+          textLayout={textLayout}
         />
       }
     </TreeContainer>
