@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Tree from 'react-d3-tree';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const TreeContainer = styled.div`
+  height: 100%;
   width: 100vw;
 `;
 
@@ -57,7 +58,7 @@ const textLayout = {
   textAnchor: 'middle',
 };
 
-const BinarySearchTree = () => {
+const StyledTree = () => {
   const treeContainerEl = useRef(null);
   const [translate, setTranslate] = useState(null);
 
@@ -87,4 +88,4 @@ const BinarySearchTree = () => {
   )
 };
 
-export default BinarySearchTree;
+export default StyledTree;
