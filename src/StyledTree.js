@@ -3,8 +3,7 @@ import Tree from 'react-d3-tree';
 import styled from 'styled-components/macro';
 
 const TreeContainer = styled.div`
-  height: 100%;
-  width: 100vw;
+  height: 100vh;
 `;
 
 const TreeDefaultData = [

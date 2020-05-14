@@ -4,7 +4,6 @@ import StyledTree from './StyledTree';
 
 const Root = styled.div`
   background: #162447;
-  height: 100vh;
 `;
 
 const App = () => (
