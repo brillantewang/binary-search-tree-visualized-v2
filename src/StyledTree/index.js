@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Tree from 'react-d3-tree';
 import styled from 'styled-components/macro';
 import cloneDeep from 'clone-deep';
-import { insertBlankChildrenNodesRecursively, hidePathsToBlankNodes } from './util';
+import { insertBlankNodesRecursively, hidePathsToBlankNodes } from './util';
 
 const TreeContainer = styled.div`
   height: 100vh;
@@ -74,7 +74,7 @@ const StyledTree = () => {
     // That allows single child nodes to be offset from their parents instead of
     // directly below (the default behavior for react-d3-tree).
     const treeDataCopy = cloneDeep(treeData);
-    insertBlankChildrenNodesRecursively(treeDataCopy);
+    insertBlankNodesRecursively(treeDataCopy);
     setTreeData(treeDataCopy);
   };
 

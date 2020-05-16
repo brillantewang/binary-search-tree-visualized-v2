@@ -18,9 +18,9 @@ const insertBlankChildNode = (node) => {
   }
 }
 
-export const insertBlankChildrenNodesRecursively = node => {
+export const insertBlankNodesRecursively = node => {
   const children = node.children || [];
-  children.forEach(child => insertBlankChildrenNodesRecursively(child));
+  children.forEach(child => insertBlankNodesRecursively(child));
   if (children.length === 1) insertBlankChildNode(node);
 }
 
