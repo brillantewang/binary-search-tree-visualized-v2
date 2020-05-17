@@ -72,7 +72,7 @@ const StyledTree = () => {
   const insertBlankPlaceholderNodes = () => {
     // We insert blank nodes in the tree to act as sibling placeholders.
     // That allows single child nodes to be offset from their parents instead of
-    // directly below (the default behavior for react-d3-tree).
+    // positioned directly below (the default behavior for react-d3-tree).
     const treeDataCopy = cloneDeep(treeData);
     insertBlankNodesRecursively(treeDataCopy);
     setTreeData(treeDataCopy);
