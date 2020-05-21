@@ -3,6 +3,7 @@ import Tree from 'react-d3-tree';
 import styled from 'styled-components/macro';
 import cloneDeep from 'clone-deep';
 import { insertBlankNodesRecursively, hidePathsToBlankNodes } from './util';
+import PropTypes from 'prop-types';
 
 const TreeContainer = styled.div`
   height: 100vh;
@@ -90,42 +91,40 @@ const textLayout = {
   y: 0
 };
 
-const StyledTree = () => {
+const StyledTree = ({ rawTreeData }) => {
   const treeContainerEl = useRef(null);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
-  const [treeData, setTreeData] = useState(treeDefaultData);
-
-  const insertBlankPlaceholderNodes = () => {
-    // We insert blank nodes in the tree to act as sibling placeholders.
-    // That allows single child nodes to be offset from their parents instead of
-    // positioned directly below (the default behavior for react-d3-tree).
-    const treeDataCopy = cloneDeep(treeData);
-    insertBlankNodesRecursively(treeDataCopy);
-    setTreeData(treeDataCopy);
-  };
-
-  const handleBlankPlaceHolderNodes = () => {
-    insertBlankPlaceholderNodes();
-    hidePathsToBlankNodes();
-  };
+  const [treeData, setTreeData] = useState({});
   
-  const centerTree = () => {
-    const dimensions = treeContainerEl.current.getBoundingClientRect();
-    setTranslate({
-      x: dimensions.width / 2,
-      y: dimensions.height / 2
-    });
-  }
+  useEffect(() => {
+    const centerTree = () => {
+      const dimensions = treeContainerEl.current.getBoundingClientRect();
+      setTranslate({
+        x: dimensions.width / 2,
+        y: dimensions.height / 2
+      });
+    }
+
+    centerTree()
+  }, []);
 
   useEffect(() => {
-    // https://medium.com/javascript-in-plain-english/how-to-use-async-function-in-react-hook-useeffect-typescript-js-6204a788a435
-    async function setupTree() {
-      await centerTree();
-      handleBlankPlaceHolderNodes()
+    const insertBlankPlaceholderNodes = () => {
+      // We insert blank nodes in the tree to act as sibling placeholders.
+      // That allows single child nodes to be offset from their parents instead of
+      // positioned directly below (the default behavior for react-d3-tree).
+      const newTreeData = cloneDeep(rawTreeData);
+      insertBlankNodesRecursively(newTreeData);
+      setTreeData(newTreeData);
     };
 
-    setupTree();
-  }, []);
+    insertBlankPlaceholderNodes();
+  }, [rawTreeData])
+
+  useEffect(() => {
+    // After we insert blank placeholder nodes, we also need to hide their paths.
+    hidePathsToBlankNodes();
+  }, [treeData]);
 
   return (
     <TreeContainer ref={treeContainerEl}>
@@ -137,10 +136,18 @@ const StyledTree = () => {
         styles={styles}
         nodeSvgShape={nodeSvgShape}
         textLayout={textLayout}
-        onUpdate={hidePathsToBlankNodes}
+        onUpdate={hidePathsToBlankNodes} // Toggling (aka expanding/collapsing) a node will cause react-d3-tree to fully re-create the new tree, which will include the paths to blank nodes. So we need to hide those paths again on these toggle updates.
       />
     </TreeContainer>
   )
+};
+
+StyledTree.propTypes = {
+  rawTreeData: PropTypes.object,
+};
+
+StyledTree.defaultProps = {
+  rawTreeData: treeDefaultData,
 };
 
 export default StyledTree;
