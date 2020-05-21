@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/binary-search-tree-visualized-v2/precache-manifest.b7c08cba457a420039c58bb1683bbcc2.js"
+  "/binary-search-tree-visualized-v2/precache-manifest.8727303f0c73a6f5ebd743324b6bc3e6.js"
 );
 
 self.addEventListener('message', (event) => {
