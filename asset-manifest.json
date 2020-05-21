@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/binary-search-tree-visualized-v2/static/css/main.88824ec2.chunk.css",
-    "main.js": "/binary-search-tree-visualized-v2/static/js/main.7b48f89b.chunk.js",
-    "main.js.map": "/binary-search-tree-visualized-v2/static/js/main.7b48f89b.chunk.js.map",
+    "main.js": "/binary-search-tree-visualized-v2/static/js/main.8fb1b2c7.chunk.js",
+    "main.js.map": "/binary-search-tree-visualized-v2/static/js/main.8fb1b2c7.chunk.js.map",
     "runtime-main.js": "/binary-search-tree-visualized-v2/static/js/runtime-main.bab6c991.js",
     "runtime-main.js.map": "/binary-search-tree-visualized-v2/static/js/runtime-main.bab6c991.js.map",
     "static/js/2.e1a23d8e.chunk.js": "/binary-search-tree-visualized-v2/static/js/2.e1a23d8e.chunk.js",
     "static/js/2.e1a23d8e.chunk.js.map": "/binary-search-tree-visualized-v2/static/js/2.e1a23d8e.chunk.js.map",
     "index.html": "/binary-search-tree-visualized-v2/index.html",
-    "precache-manifest.6317999f10b5b75d3b1d0c4b8d4bed2b.js": "/binary-search-tree-visualized-v2/precache-manifest.6317999f10b5b75d3b1d0c4b8d4bed2b.js",
+    "precache-manifest.481c87fa2203cd52c7f15de685a414a7.js": "/binary-search-tree-visualized-v2/precache-manifest.481c87fa2203cd52c7f15de685a414a7.js",
     "service-worker.js": "/binary-search-tree-visualized-v2/service-worker.js",
     "static/css/main.88824ec2.chunk.css.map": "/binary-search-tree-visualized-v2/static/css/main.88824ec2.chunk.css.map",
     "static/js/2.e1a23d8e.chunk.js.LICENSE.txt": "/binary-search-tree-visualized-v2/static/js/2.e1a23d8e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.bab6c991.js",
     "static/js/2.e1a23d8e.chunk.js",
     "static/css/main.88824ec2.chunk.css",
-    "static/js/main.7b48f89b.chunk.js"
+    "static/js/main.8fb1b2c7.chunk.js"
   ]
 }
