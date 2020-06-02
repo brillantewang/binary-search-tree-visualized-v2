@@ -34,3 +34,17 @@ export const hidePathsToBlankNodes = () => {
   const pathsToBlankNodes = getPathsToBlankNodes();
   pathsToBlankNodes.forEach(path => path.style.strokeWidth = "0");
 };
+
+export const getRootNodeDimensions = () => {
+  const treeGElement = document.querySelector('.nodeBase');
+  return treeGElement.getBoundingClientRect();
+}
+
+export const getTreeDimensions = () => {
+  const treeGElement = document.querySelector('g');
+  return treeGElement.getBoundingClientRect();
+}
+
+export const getTreeContainerPadding = () => {
+  return ({ vertical: 400, horizontal: 40 });
+}
