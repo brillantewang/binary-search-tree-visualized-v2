@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/binary-search-tree-visualized-v2/static/css/main.157672db.chunk.css",
-    "main.js": "/binary-search-tree-visualized-v2/static/js/main.84954b2c.chunk.js",
-    "main.js.map": "/binary-search-tree-visualized-v2/static/js/main.84954b2c.chunk.js.map",
+    "main.css": "/binary-search-tree-visualized-v2/static/css/main.fd4377e2.chunk.css",
+    "main.js": "/binary-search-tree-visualized-v2/static/js/main.5e4e86c5.chunk.js",
+    "main.js.map": "/binary-search-tree-visualized-v2/static/js/main.5e4e86c5.chunk.js.map",
     "runtime-main.js": "/binary-search-tree-visualized-v2/static/js/runtime-main.bab6c991.js",
     "runtime-main.js.map": "/binary-search-tree-visualized-v2/static/js/runtime-main.bab6c991.js.map",
-    "static/js/2.13c368ad.chunk.js": "/binary-search-tree-visualized-v2/static/js/2.13c368ad.chunk.js",
-    "static/js/2.13c368ad.chunk.js.map": "/binary-search-tree-visualized-v2/static/js/2.13c368ad.chunk.js.map",
+    "static/js/2.dbccf69b.chunk.js": "/binary-search-tree-visualized-v2/static/js/2.dbccf69b.chunk.js",
+    "static/js/2.dbccf69b.chunk.js.map": "/binary-search-tree-visualized-v2/static/js/2.dbccf69b.chunk.js.map",
     "index.html": "/binary-search-tree-visualized-v2/index.html",
-    "precache-manifest.24698d354d8eebb365b2e59c8b80080b.js": "/binary-search-tree-visualized-v2/precache-manifest.24698d354d8eebb365b2e59c8b80080b.js",
+    "precache-manifest.813c27282acaea8cc9691e997d2051ce.js": "/binary-search-tree-visualized-v2/precache-manifest.813c27282acaea8cc9691e997d2051ce.js",
     "service-worker.js": "/binary-search-tree-visualized-v2/service-worker.js",
-    "static/css/main.157672db.chunk.css.map": "/binary-search-tree-visualized-v2/static/css/main.157672db.chunk.css.map",
-    "static/js/2.13c368ad.chunk.js.LICENSE.txt": "/binary-search-tree-visualized-v2/static/js/2.13c368ad.chunk.js.LICENSE.txt"
+    "static/css/main.fd4377e2.chunk.css.map": "/binary-search-tree-visualized-v2/static/css/main.fd4377e2.chunk.css.map",
+    "static/js/2.dbccf69b.chunk.js.LICENSE.txt": "/binary-search-tree-visualized-v2/static/js/2.dbccf69b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bab6c991.js",
-    "static/js/2.13c368ad.chunk.js",
-    "static/css/main.157672db.chunk.css",
-    "static/js/main.84954b2c.chunk.js"
+    "static/js/2.dbccf69b.chunk.js",
+    "static/css/main.fd4377e2.chunk.css",
+    "static/js/main.5e4e86c5.chunk.js"
   ]
 }
