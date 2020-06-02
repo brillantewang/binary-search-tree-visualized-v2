@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0674c8bb0384012bd9c6fe0442eb345a",
+    "revision": "8dc7ceb173b7dc2b4a0a24ec7643af35",
     "url": "/binary-search-tree-visualized-v2/index.html"
   },
   {
-    "revision": "8bb1f2cb94026a2d63db",
+    "revision": "a2ebf793215bb7ac69d6",
     "url": "/binary-search-tree-visualized-v2/static/css/main.fd4377e2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/binary-search-tree-visualized-v2/static/js/2.dbccf69b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8bb1f2cb94026a2d63db",
-    "url": "/binary-search-tree-visualized-v2/static/js/main.11144ed2.chunk.js"
+    "revision": "a2ebf793215bb7ac69d6",
+    "url": "/binary-search-tree-visualized-v2/static/js/main.5aca5fc0.chunk.js"
   },
   {
     "revision": "33a45da0551405fd2c92",
