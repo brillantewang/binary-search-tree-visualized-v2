@@ -44,7 +44,3 @@ export const getTreeDimensions = () => {
   const treeGElement = document.querySelector('g');
   return treeGElement.getBoundingClientRect();
 };
-
-export const getTreeContainerPadding = () => {
-  return ({ vertical: 400, horizontal: 40 });
-};

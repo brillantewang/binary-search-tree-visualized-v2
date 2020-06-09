@@ -5,7 +5,6 @@ import {
   hidePathsToBlankNodes,
   getTreeDimensions,
   getRootNodeDimensions,
-  getTreeContainerPadding,
 } from './util';
 import PropTypes from 'prop-types';
 
@@ -21,6 +20,13 @@ const TreeContainer = styled.div`
   }
 `;
 
+const treeContainerPadding = {
+  top: 200,
+  right: 20,
+  bottom: 200,
+  left: 20,
+};
+
 const Mobile = ({ treeData }) => {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const [treeContainerDimensions, setTreeContainerDimensions] = useState({ height: 0, width: 0 });
@@ -28,11 +34,10 @@ const Mobile = ({ treeData }) => {
   const resizeTreeContainer = () => {
     // We resize the tree container based on the newly updated size of the tree
     const treeDimensions = getTreeDimensions();
-    const treeContainerPadding = getTreeContainerPadding(treeDimensions);
 
     setTreeContainerDimensions({
-      height: treeDimensions.height + treeContainerPadding.vertical,
-      width: treeDimensions.width + treeContainerPadding.horizontal,
+      height: treeContainerPadding.top + treeDimensions.height + treeContainerPadding.bottom,
+      width: treeContainerPadding.left + treeDimensions.width + treeContainerPadding.right,
     });
   };
 
@@ -41,12 +46,12 @@ const Mobile = ({ treeData }) => {
     const rootNodeDimensions = getRootNodeDimensions();
     const treeDimensions = getTreeDimensions();
     const rootNodeOffsetLeft = rootNodeDimensions.left - treeDimensions.left;
-    const xPosition = rootNodeOffsetLeft + (rootNodeDimensions.width / 2);
-    const treeContainerPadding = getTreeContainerPadding(treeDimensions);
+    const rootNodeRadius = rootNodeDimensions.width / 2;
+    const rootNodeXPositionInTree = rootNodeOffsetLeft + rootNodeRadius;
 
     setTranslate({
-      x: xPosition + (treeContainerPadding.horizontal / 2),
-      y: treeContainerPadding.vertical / 2,
+      x: rootNodeXPositionInTree + treeContainerPadding.left,
+      y: treeContainerPadding.top,
     });
   };
 
