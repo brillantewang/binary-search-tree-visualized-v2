@@ -4,7 +4,7 @@ import Mobile from './Mobile';
 import Desktop from './Desktop';
 import { breakpoints } from '../breakpoints';
 import cloneDeep from 'clone-deep';
-import { insertBlankNodesRecursively, hidePathsToBlankNodes } from './util';
+import { insertBlankNodesRecursively } from './util';
 
 const treeDefaultData = {
   name: '12',
@@ -69,11 +69,6 @@ const ResponsiveTree = ({ rawTreeData }) => {
 
     insertBlankPlaceholderNodes();
   }, [rawTreeData]);
-
-  useEffect(() => {
-    // After we insert blank placeholder nodes, we also need to hide their paths.
-    hidePathsToBlankNodes();
-  }, [treeData]);
 
   // https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
   return window.innerWidth < breakpoints.tablet ? <Mobile treeData={treeData} /> : <Desktop treeData={treeData} />;

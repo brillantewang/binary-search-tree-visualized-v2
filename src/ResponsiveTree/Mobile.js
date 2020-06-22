@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import StyledTree from '../StyledTree';
 import styled from 'styled-components/macro';
 import {
-  hidePathsToBlankNodes,
   getTreeDimensions,
   getRootNodeDimensions,
 } from './util';
@@ -70,9 +69,8 @@ const Mobile = ({ treeData }) => {
   }, [treeData, adjustContainerSizeAndTreePosition]);
 
   const onUpdate = event => {
-    // Toggling (aka expanding/collapsing) a node will cause react-d3-tree to fully re-create
-    // the new tree, including the paths to blank nodes again. So we need to hide them.
-    hidePathsToBlankNodes();
+    // We only adjust if event.node exists, aka it's a node toggle event. We don't
+    // care about other events.
     if (event.node) adjustContainerSizeAndTreePosition();
   }
 

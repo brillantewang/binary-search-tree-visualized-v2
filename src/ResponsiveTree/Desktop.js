@@ -1,8 +1,6 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import StyledTree from '../StyledTree';
 import styled from 'styled-components/macro';
-import { hidePathsToBlankNodes } from './util';
 import PropTypes from 'prop-types';
 
 const TreeContainer = styled.div`
@@ -31,7 +29,6 @@ const Desktop = ({ treeData }) => {
       <StyledTree
         data={treeData}
         translate={translate}
-        onUpdate={hidePathsToBlankNodes}
       />
     </TreeContainer>
   )

@@ -24,17 +24,6 @@ export const insertBlankNodesRecursively = node => {
   if (children.length === 1) insertBlankChildNode(node);
 };
 
-const getPathsToBlankNodes = () => {
-  const blankCircles = document.querySelectorAll('circle[r="0"]');
-  const blankNodeIds = [...blankCircles].map(circle => circle.parentNode.id);
-  return blankNodeIds.map(id => document.querySelector(`path[data-target-id="${id}"`))
-};
-
-export const hidePathsToBlankNodes = () => {
-  const pathsToBlankNodes = getPathsToBlankNodes();
-  pathsToBlankNodes.forEach(path => path.style.strokeWidth = "0");
-};
-
 export const getRootNodeDimensions = () => {
   const treeGElement = document.querySelector('.nodeBase');
   return treeGElement.getBoundingClientRect();

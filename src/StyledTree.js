@@ -36,11 +36,24 @@ const textLayout = {
   y: 0
 };
 
+const pathFunc = linkData => {
+  console.log(linkData);
+  const { source, target } = linkData;
+
+  // For the path elements leading to blank nodes, we don't want them to have
+  // a real path/shape. Otherwise we'll see a bunch of paths leading to
+  // nothing and potentially making the tree g element unnecessarily wide if some of
+  // these paths are at the edges.
+  if (target.name === '') return null;
+
+  return `M${source.x},${source.y}L${target.x},${target.y}`;
+};
+
 const StyledTree = ({ data, translate, zoomable, onUpdate }) => {
   return (
     <Tree
       orientation='vertical'
-      pathFunc='straight'
+      pathFunc={pathFunc}
       styles={styles}
       nodeSvgShape={nodeSvgShape}
       textLayout={textLayout}
