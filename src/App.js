@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import StyledTree from './StyledTree';
+import ResponsiveTree from './ResponsiveTree';
 import { breakpoints } from './breakpoints';
 
 const Root = styled.div`
@@ -16,7 +16,7 @@ const Root = styled.div`
 
 const App = () => (
   <Root>
-    <StyledTree />
+    <ResponsiveTree />
   </Root>
 );
 

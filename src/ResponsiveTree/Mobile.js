@@ -1,20 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Tree from 'react-d3-tree';
+import React, { useState, useEffect } from 'react';
+import StyledTree from '../StyledTree';
 import styled from 'styled-components/macro';
-import cloneDeep from 'clone-deep';
 import {
-  insertBlankNodesRecursively,
   hidePathsToBlankNodes,
   getTreeDimensions,
   getRootNodeDimensions,
   getTreeContainerPadding,
 } from './util';
-import {
-  treeDefaultData,
-  styles,
-  nodeSvgShape,
-  textLayout,
-} from './constants';
 import PropTypes from 'prop-types';
 
 const TreeContainer = styled.div`
@@ -23,10 +15,8 @@ const TreeContainer = styled.div`
   min-height: 100vh;
 `;
 
-const Mobile = ({ rawTreeData }) => {
-  const treeContainerEl = useRef(null);
+const Mobile = ({ treeData }) => {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
-  const [treeData, setTreeData] = useState({});
   const [treeContainerDimensions, setTreeContainerDimensions] = useState({ height: 0, width: 0 });
   
   // useEffect(() => {
@@ -45,6 +35,7 @@ const Mobile = ({ rawTreeData }) => {
   };
 
   const positionTree = () => {
+    // We position the tree to be flush with the tree container
     const rootNodeDimensions = getRootNodeDimensions();
     const treeDimensions = getTreeDimensions();
     const rootNodeOffsetLeft = rootNodeDimensions.left - treeDimensions.left;
@@ -66,21 +57,6 @@ const Mobile = ({ rawTreeData }) => {
   }
 
   useEffect(() => {
-    const insertBlankPlaceholderNodes = () => {
-      // We insert blank nodes in the tree to act as sibling placeholders.
-      // That allows single child nodes to be offset from their parents instead of
-      // positioned directly below (the default behavior for react-d3-tree).
-      const newTreeData = cloneDeep(rawTreeData);
-      insertBlankNodesRecursively(newTreeData);
-      setTreeData(newTreeData);
-    };
-
-    insertBlankPlaceholderNodes();
-  }, [rawTreeData])
-
-  useEffect(() => {
-    // After we insert blank placeholder nodes, we also need to hide their paths.
-    hidePathsToBlankNodes();
     adjustContainerSizeAndTreePosition();
   }, [treeData]);
 
@@ -92,19 +68,10 @@ const Mobile = ({ rawTreeData }) => {
   }
 
   return (
-    <TreeContainer
-      ref={treeContainerEl}
-      height={treeContainerDimensions.height}
-      width={treeContainerDimensions.width}
-    >
-      <Tree
+    <TreeContainer height={treeContainerDimensions.height} width={treeContainerDimensions.width}>
+      <StyledTree
         data={treeData}
-        orientation='vertical'
-        pathFunc='straight'
         translate={translate}
-        styles={styles}
-        nodeSvgShape={nodeSvgShape}
-        textLayout={textLayout}
         zoomable={false}
         onUpdate={onUpdate}
       />
@@ -113,11 +80,7 @@ const Mobile = ({ rawTreeData }) => {
 };
 
 Mobile.propTypes = {
-  rawTreeData: PropTypes.object,
-};
-
-Mobile.defaultProps = {
-  rawTreeData: treeDefaultData,
+  treeData: PropTypes.object,
 };
 
 export default Mobile;
