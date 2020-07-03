@@ -17,6 +17,23 @@ const TreeContainer = styled.div`
       while waiting for the tree container to resize */
     overflow: visible;
   }
+
+  circle[r="0"] + g {
+    /* For some reason in Safari, the sibling g element of the blank circle
+    is given a 2x2 height and width.
+
+    So whenever the tree g element width gets calculated, it seems to take into account
+    this g element because it's taking up some space. However we don't want the width
+    to take into acccount any blank nodes because then the width might be unnecessarily wide
+    if a blank node is at the edge, making it look like there's extra horizontal padding.
+    So we give this g element display: none in order to essentially remove it from the
+    document so it no longer takes up space.
+
+    This seems to allow the tree g element width calculation to no longer take it into
+    account, giving us a width that's not overly wide in these 'blank node at the edges'
+    scenarios. */
+    display: none;
+  }
 `;
 
 const treeContainerPadding = {
