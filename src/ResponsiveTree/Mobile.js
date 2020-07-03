@@ -13,6 +13,12 @@ const TreeContainer = styled.div`
   height: ${props => `${props.height}px`};
   width: ${props => `${props.width}px`};
   min-height: 100vh;
+
+  svg {
+    /* Allows the tree to 'extend' past the bounds of the svg
+      while waiting for the tree container to resize */
+    overflow: visible;
+  }
 `;
 
 const Mobile = ({ treeData }) => {
