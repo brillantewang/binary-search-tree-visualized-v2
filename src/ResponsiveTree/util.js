@@ -33,3 +33,13 @@ export const getTreeDimensions = () => {
   const treeGElement = document.querySelector('g');
   return treeGElement.getBoundingClientRect();
 };
+
+// adapted/simplified from https://www.educative.io/edpresso/how-to-use-the-debounce-function-in-javascript
+export const debounce = (callback, wait) => {
+  let timeout;
+
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => callback(), wait);
+  }
+};

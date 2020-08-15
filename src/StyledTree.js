@@ -37,7 +37,6 @@ const textLayout = {
 };
 
 const pathFunc = linkData => {
-  console.log(linkData);
   const { source, target } = linkData;
 
   // For the path elements leading to blank nodes, we don't want them to have
