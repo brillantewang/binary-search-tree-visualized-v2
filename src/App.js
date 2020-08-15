@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import ResponsiveTree from './ResponsiveTree';
 import { breakpoints } from './breakpoints';
+import GlobalStateProvider from './store/GlobalStateProvider';
 
 const Root = styled.div`
   background: #162447;
@@ -15,9 +16,11 @@ const Root = styled.div`
 `;
 
 const App = () => (
-  <Root>
-    <ResponsiveTree />
-  </Root>
+  <GlobalStateProvider>
+    <Root>
+      <ResponsiveTree />
+    </Root>
+  </GlobalStateProvider>
 );
 
 export default App;
