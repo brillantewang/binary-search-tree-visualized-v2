@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import ResponsiveTree from './ResponsiveTree';
 import { breakpoints } from './breakpoints';
 import GlobalStateProvider from './store/GlobalStateProvider';
+import StartScreen from './StartScreen';
 
 const Root = styled.div`
   background: #162447;
@@ -18,6 +19,7 @@ const Root = styled.div`
 const App = () => (
   <GlobalStateProvider>
     <Root>
+      <StartScreen />
       <ResponsiveTree />
     </Root>
   </GlobalStateProvider>

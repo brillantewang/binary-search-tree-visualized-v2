@@ -25,8 +25,12 @@ export const insertBlankNodesRecursively = node => {
 };
 
 export const getRootNodeDimensions = () => {
-  const treeGElement = document.querySelector('.nodeBase');
-  return treeGElement.getBoundingClientRect();
+  // Looks like react-d3-tree only gives the .nodeBase class name to nodes that have children.
+  // It gives nodes with no children the class name .leafNodeBase. So in the case that
+  // there's only one node in the entire tree, it has the class name .leafNodeBase, so we need
+  // to select with that class name instead, and treat it as the node base.
+  const nodeBase = document.querySelector('.nodeBase') || document.querySelector('.leafNodeBase');
+  return nodeBase.getBoundingClientRect();
 };
 
 export const getTreeDimensions = () => {
