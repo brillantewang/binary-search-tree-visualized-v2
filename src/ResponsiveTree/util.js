@@ -11,12 +11,62 @@ const buildBlankNode = () => ({
 const insertBlankChildNode = (node) => {
   const childNode = node.children[0];
   const blankNode = buildBlankNode();
-  if (parseInt(childNode.name) < parseInt(node.name)) {
+  if (parseFloat(childNode.name) < parseFloat(node.name)) {
     node.children.push(blankNode);
   } else {
     node.children.unshift(blankNode);
   }
 };
+
+export const findNode = (node, valueToFind) => {
+  const currentNodeValue = parseFloat(node.name);
+  const leftNode = node.children.find(child => parseFloat(child.name) < currentNodeValue);
+  const rightNode = node.children.find(child => parseFloat(child.name) > currentNodeValue);
+
+  if (isTreeEmpty(node)) {
+    return;
+  } else if (valueToFind < currentNodeValue) {
+    if (leftNode === undefined) {
+      return
+    } else {
+      return findNode(leftNode, valueToFind);
+    }
+  } else if (valueToFind > currentNodeValue) {
+    if (rightNode === undefined) {
+      return;
+    } else {
+      return findNode(rightNode, valueToFind);
+    }
+  } else {
+    return currentNodeValue;
+  }
+};
+
+export const insertNode = (node, nodeToInsert) => {
+  const currentNodeValue = parseFloat(node.name);
+  const valueToAdd = parseFloat(nodeToInsert.name);
+  const leftNode = node.children.find(child => parseFloat(child.name) < currentNodeValue);
+  const rightNode = node.children.find(child => parseFloat(child.name) > currentNodeValue);
+
+  if (isTreeEmpty(node)) {
+    Object.assign(node, nodeToInsert);
+  } else if (valueToAdd < currentNodeValue) {
+    if (leftNode === undefined) {
+      node.children.unshift(nodeToInsert);
+    } else {
+      insertNode(leftNode, nodeToInsert);
+    }
+  } else if (valueToAdd > currentNodeValue) {
+    if (rightNode === undefined) {
+      node.children.push(nodeToInsert);
+    } else {
+      insertNode(rightNode, nodeToInsert);
+    }
+  } else {
+    console.log('Duplicate values not allowed');
+  }
+};
+
 
 export const insertBlankNodesRecursively = node => {
   const children = node.children || [];
@@ -47,3 +97,5 @@ export const debounce = (callback, wait) => {
     timeout = setTimeout(() => callback(), wait);
   }
 };
+
+export const isTreeEmpty = node => node.name === null;
