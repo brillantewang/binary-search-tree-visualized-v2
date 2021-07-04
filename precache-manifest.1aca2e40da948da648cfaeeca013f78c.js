@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2697c611803bb8c799850640e45b700d",
+    "revision": "c74afe99e14a25c30d93a8a7c3043b85",
     "url": "/binary-search-tree-visualized-v2/index.html"
   },
   {
-    "revision": "4595c4a38e2ae16e6f5c",
+    "revision": "fa85a50904eb299c71a2",
     "url": "/binary-search-tree-visualized-v2/static/css/main.1cc92c7c.chunk.css"
   },
   {
-    "revision": "79458825b803006649d6",
-    "url": "/binary-search-tree-visualized-v2/static/js/2.c73370c6.chunk.js"
+    "revision": "b0e21d24afc64353b90e",
+    "url": "/binary-search-tree-visualized-v2/static/js/2.4d6b6e81.chunk.js"
   },
   {
     "revision": "0a49b923ca06079b185764043a01a7e5",
-    "url": "/binary-search-tree-visualized-v2/static/js/2.c73370c6.chunk.js.LICENSE.txt"
+    "url": "/binary-search-tree-visualized-v2/static/js/2.4d6b6e81.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4595c4a38e2ae16e6f5c",
-    "url": "/binary-search-tree-visualized-v2/static/js/main.68afd6c6.chunk.js"
+    "revision": "fa85a50904eb299c71a2",
+    "url": "/binary-search-tree-visualized-v2/static/js/main.43357bc3.chunk.js"
   },
   {
     "revision": "33a45da0551405fd2c92",
