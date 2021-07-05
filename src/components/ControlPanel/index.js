@@ -10,6 +10,8 @@ const Root = styled.div`
 `;
 
 const ControlPanel = () => {
+  // might add more features to this in the future
+  // like traversals, etc
   return (
     <Root>
       <InsertOrDelete />

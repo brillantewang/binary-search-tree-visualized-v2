@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { emptyRootNode } from '../constants';
+import { emptyRootNode, testRootNode } from '../constants'; // eslint-disable-line no-unused-vars
 
 export const REPLACE_TREE = 'REPLACE_TREE';
 
@@ -19,63 +19,8 @@ const reducer = (state, action) => {
 };
 
 const initialState = {
-  rawTreeData: emptyRootNode,
+  rawTreeData: emptyRootNode, // replace with testRootNode if you want to populate tree with test data
 };
-
-// comment in to populate default test nodes
-// const initialState = {
-//   rawTreeData: {
-//     name: '12',
-//     children: [
-//       {
-//         name: '8',
-//         children: [
-//           {
-//             name: '15',
-//             children: [
-//               {
-//                 name: '3',
-//                 children: [],
-//               },
-//             ]
-//           },
-//           {
-//             name: '19',
-//             children: [
-//               {
-//                 name: '11',
-//                 children: [],
-//               },
-//               {
-//                 name: '55',
-//                 children: [
-//                   {
-//                     name: '14',
-//                     children: [
-//                       {
-//                         name: '444',
-//                         children: [],
-//                       }
-//                     ]
-//                   }
-//                 ]
-//               },
-//             ]
-//           },
-//         ]
-//       },
-//       {
-//         name: '24',
-//         children: [
-//           {
-//             name: '2',
-//             children: [],
-//           }
-//         ]
-//       }
-//     ],
-//   },
-// };
 
 const useGlobalState = () => {
   const [globalState, globalDispatch] = useReducer(reducer, initialState);

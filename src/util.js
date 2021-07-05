@@ -1,4 +1,4 @@
-import { emptyRootNode } from "../constants";
+import { emptyRootNode } from "./constants";
 
 const buildBlankNode = () => ({
   name: '',

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Mobile from './Mobile';
 import Desktop from './Desktop';
-import { breakpoints } from '../breakpoints';
+import { breakpoints } from '../../breakpoints';
 import cloneDeep from 'clone-deep';
-import { insertBlankNodesRecursively, isTreeEmpty } from './util';
-import Context from '../store/context';
+import { insertBlankNodesRecursively, isTreeEmpty } from '../../util';
+import Context from '../../store/context';
 import EmptyState from './EmptyState';
 
 const ResponsiveTree = () => {

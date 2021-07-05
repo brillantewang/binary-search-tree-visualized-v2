@@ -5,7 +5,7 @@ import {
   getTreeDimensions,
   getRootNodeDimensions,
   debounce,
-} from './util';
+} from '../../util';
 import PropTypes from 'prop-types';
 
 const TreeContainer = styled.div`

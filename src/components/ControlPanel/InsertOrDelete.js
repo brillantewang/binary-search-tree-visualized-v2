@@ -2,9 +2,9 @@ import cloneDeep from 'clone-deep';
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components/macro';
 import MobileFriendlyInput from '../MobileFriendlyInput';
-import { deleteNode, findNode, insertNode, isTreeEmpty } from '../ResponsiveTree/util';
-import Context from '../store/context';
-import { insert, replaceTree } from '../store/useGlobalState';
+import { deleteNode, findNode, insertNode, isTreeEmpty } from '../../util';
+import Context from '../../store/context';
+import { replaceTree } from '../../store/useGlobalState';
 
 const Root = styled.div`
   color: white;
