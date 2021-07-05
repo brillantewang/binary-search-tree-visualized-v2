@@ -61,27 +61,33 @@ const Mobile = ({ treeData }) => {
   }, []);
 
   const resizeTreeContainer = () => {
-    // We resize the tree container based on the newly updated size of the tree
-    const treeDimensions = getTreeDimensions();
+    const treeGElement = document.querySelector('g');
+    if (treeGElement) { // We check for the tree G element in case we just removed it (by deleting the root node)
+      // We resize the tree container based on the newly updated size of the tree
+      const treeDimensions = getTreeDimensions();
 
-    setTreeContainerDimensions({
-      height: treeContainerPadding.top + treeDimensions.height + treeContainerPadding.bottom,
-      width: treeContainerPadding.left + treeDimensions.width + treeContainerPadding.right,
-    });
+      setTreeContainerDimensions({
+        height: treeContainerPadding.top + treeDimensions.height + treeContainerPadding.bottom,
+        width: treeContainerPadding.left + treeDimensions.width + treeContainerPadding.right,
+      });
+    }
   };
 
   const positionTree = () => {
-    // We position the tree to be flush with the tree container
-    const rootNodeDimensions = getRootNodeDimensions();
-    const treeDimensions = getTreeDimensions();
-    const rootNodeOffsetLeft = rootNodeDimensions.left - treeDimensions.left;
-    const rootNodeRadius = rootNodeDimensions.width / 2;
-    const rootNodeXPositionInTree = rootNodeOffsetLeft + rootNodeRadius;
+    const treeGElement = document.querySelector('g');
+    if (treeGElement) { // We check for the tree G element in case we just removed it (by deleting the root node)
+      // We position the tree to be flush with the tree container
+      const rootNodeDimensions = getRootNodeDimensions();
+      const treeDimensions = getTreeDimensions();
+      const rootNodeOffsetLeft = rootNodeDimensions.left - treeDimensions.left;
+      const rootNodeRadius = rootNodeDimensions.width / 2;
+      const rootNodeXPositionInTree = rootNodeOffsetLeft + rootNodeRadius;
 
-    setTranslate({
-      x: rootNodeXPositionInTree + treeContainerPadding.left,
-      y: treeContainerPadding.top,
-    });
+      setTranslate({
+        x: rootNodeXPositionInTree + treeContainerPadding.left,
+        y: treeContainerPadding.top,
+      });
+    }
   };
 
   return (

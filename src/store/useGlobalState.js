@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { emptyRootNode } from '../constants';
 
 export const REPLACE_TREE = 'REPLACE_TREE';
 
@@ -18,10 +19,7 @@ const reducer = (state, action) => {
 };
 
 const initialState = {
-  rawTreeData: {
-    name: null,
-    children: [],
-  },
+  rawTreeData: emptyRootNode,
 };
 
 // comment in to populate default test nodes

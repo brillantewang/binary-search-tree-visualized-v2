@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Insert from './Insert';
+import InsertOrDelete from './InsertOrDelete';
 
 const Root = styled.div`
   color: white;
@@ -12,7 +12,7 @@ const Root = styled.div`
 const ControlPanel = () => {
   return (
     <Root>
-      <Insert />
+      <InsertOrDelete />
     </Root>
   );
 };

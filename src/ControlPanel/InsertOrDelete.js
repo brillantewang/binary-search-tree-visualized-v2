@@ -2,7 +2,7 @@ import cloneDeep from 'clone-deep';
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components/macro';
 import MobileFriendlyInput from '../MobileFriendlyInput';
-import { findNode, insertNode } from '../ResponsiveTree/util';
+import { deleteNode, findNode, insertNode, isTreeEmpty } from '../ResponsiveTree/util';
 import Context from '../store/context';
 import { insert, replaceTree } from '../store/useGlobalState';
 
@@ -15,14 +15,14 @@ const InputContainer = styled.div`
   display: flex;
 `;
 
-const Submit = styled.button`
+const Button = styled.button`
   margin-left: 8px;
   border: 1px solid white;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 
-  ${({ sc }) => sc.isSubmitDisabled && css`
+  ${({ sc }) => sc.isDisabled && css`
     border: 1px solid grey;
     color: grey;
     cursor: default;
@@ -34,7 +34,7 @@ const Error = styled.div`
   margin-top: 4px;
 `;
 
-const Insert = () => {
+const InsertOrDelete = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
   const { globalState: { rawTreeData }, globalDispatch } = useContext(Context);
@@ -48,7 +48,7 @@ const Insert = () => {
     }
   };
 
-  const onSubmit = () => {
+  const onInsert = () => {
     if (findNode(rawTreeData, value)) {
       setError(`${value} is already in the tree. insert a different value mang`);
     } else {
@@ -60,25 +60,47 @@ const Insert = () => {
     }
 
     setValue('');
-  }
+  };
 
-  const isSubmitDisabled = !value || error;
+  const onDelete = () => {
+    if (!findNode(rawTreeData, value)) {
+      setError(`${value} is not in the tree. delete a different value mang`);
+    } else {
+      const rawTreeDataDeepCloned = cloneDeep(rawTreeData);
+      deleteNode(rawTreeDataDeepCloned, value);
+      globalDispatch(replaceTree(rawTreeDataDeepCloned));
+      setError('');
+    }
+
+    setValue('');
+  };
+
+  const isDisabled = !value;
 
   return (
     <Root>
       <InputContainer>
         <MobileFriendlyInput value={value} onChange={onValueChange} />
-        <Submit
-          sc={{ isSubmitDisabled }}
-          onClick={onSubmit}
-          disabled={isSubmitDisabled}
+        <Button
+          sc={{ isDisabled }}
+          onClick={onInsert}
+          disabled={isDisabled}
         >
           Insert
-        </Submit>
+        </Button>
+        {!isTreeEmpty(rawTreeData) &&
+          <Button
+            sc={{ isDisabled }}
+            onClick={onDelete}
+            disabled={isDisabled}
+          >
+            Delete
+          </Button>
+        }
       </InputContainer>
       <Error>{error}</Error>
     </Root>
   );
 };
 
-export default Insert;
+export default InsertOrDelete;

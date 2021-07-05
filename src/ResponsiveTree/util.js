@@ -1,3 +1,5 @@
+import { emptyRootNode } from "../constants";
+
 const buildBlankNode = () => ({
   name: '',
   nodeSvgShape: {
@@ -67,6 +69,55 @@ export const insertNode = (node, nodeToInsert) => {
   }
 };
 
+export const deleteNode = (node, valueToDelete, parent = null) => {
+  const currentNodeValue = parseFloat(node.name);
+  const leftNode = node.children.find(child => parseFloat(child.name) < currentNodeValue);
+  const rightNode = node.children.find(child => parseFloat(child.name) > currentNodeValue);
+
+  if (node === undefined) {
+    console.log('Node not found');
+  } else if (valueToDelete < currentNodeValue) {
+    deleteNode(leftNode, valueToDelete, node);
+  } else if (valueToDelete > currentNodeValue) {
+    deleteNode(rightNode, valueToDelete, node)
+  } else {
+    if (leftNode && rightNode) { // has two children
+      const minRightNode = getMinNode(rightNode);
+      node.name = minRightNode.name;
+      deleteNode(rightNode, minRightNode.name, node);
+    } else if (leftNode) { // has one child (left)
+      replaceNode(node, parent, leftNode);
+    } else if (rightNode) { // has one child (right)
+      replaceNode(node, parent, rightNode);
+    } else { // has no children
+      replaceNode(node, parent, null);
+    }
+  }
+};
+
+const getMinNode = node => {
+  const currentNodeValue = parseFloat(node.name);
+  const leftNode = node.children.find(child => parseFloat(child.name) < currentNodeValue);
+  if (leftNode) return getMinNode(leftNode);
+  return node;
+};
+
+const replaceNode = (node, parent, replacement) => {
+  if (parent === null) { // this means the node is the root
+    Object.assign(node, replacement || emptyRootNode);
+    return;
+  }
+
+  const currentNodeValue = parseFloat(node.name);
+  const parentNodeValue = parseFloat(parent.name);
+  if (currentNodeValue < parentNodeValue) { // this means the node is the left child
+    parent.children[0] = replacement;
+  } else { // this means the node is the right child
+    parent.children[parent.children.length - 1] = replacement;
+  }
+
+  parent.children = parent.children.filter(child => child !== null); // in case the replacement was 'null'
+};
 
 export const insertBlankNodesRecursively = node => {
   const children = node.children || [];
